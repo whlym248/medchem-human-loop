@@ -1,0 +1,17 @@
+{
+  "schema": "public_source_provenance_v1",
+  "author": "whlym",
+  "handle": "whlym",
+  "assistance": "AI-assisted development, review and release preparation",
+  "scope": "Original project scripts adapted for public release. Original private filesystem locations and research inputs are intentionally not included.",
+  "files": [
+    {"public_path": "scripts/run_md_v2.py", "source_label": "MD v2 preparation package: scripts/run_md_v2.py", "source_sha256": "2f297217a920aa6e45c76129928ffbab99f3e43d5076071aed88120411aaceca", "changes": ["Renamed optional school_package_manifest.json to generic package_manifest.json; existing records remain schema v2.", "Preserved protocol settings, identity hashes, pilot-review gate, run locks, segment prefix rules and dual checkpoint slots."]},
+    {"public_path": "scripts/run_array_task_v2.py", "source_label": "MD v2 preparation package: scripts/run_array_task_v2.py", "source_sha256": "70173d81d92bac20a5a982f99eb0687ef1d0e0804d05e955459cf9abf2ab34ab", "changes": ["Renamed school_tasks.json to generic tasks.json.", "No school job submission or queue adapter is included."]},
+    {"public_path": "scripts/analyze_production_md.py", "source_label": "Research trajectory analysis: analyze_production_md.py", "source_sha256": "aa63bafb18deb5323fa2413a398dee168aab1b66c9892c5e1ad91bd49b14446a", "changes": ["Replaced hard-coded target residue highlights with repeatable --highlight-residue.", "Removed school-specific wording from a legacy engineering warning.", "Added zero-candidate N/O hydrogen-bond handling: shape-preserving empty arrays, no empty geometry calls, empty occupancy tables and zero occupied-pair count; covered by synthetic test.", "Scientific distance/angle criteria and valid-manifest handling retained."]},
+    {"public_path": "scripts/check_pilot_quality.py", "source_label": "Research technical screening: check_pilot_quality.py", "source_sha256": "821e9d81c47054ea2ca5b848f3d3507871ed490062484cb080d16dc98d81f3b5", "changes": ["No semantic changes; text line endings may be normalized by Git."]},
+    {"public_path": "scripts/assemble_evidence.py", "source_label": "New generic public assembler adapted from internal existing-evidence demo main.py", "source_sha256": "ec0d462dde227f289007fd30421e3acbdcbd46c64d1627d0fa78dc2fc0414a81", "changes": ["Replaced fixed three-molecule/two-target research schema with declared candidates and targets.", "Added explicit schema validation, duplicate/missing-pair rejection, path confinement, finite-number checks, SHA verification and output-preservation guard.", "Added explicit unavailable/provisional/completed-reviewed MD status; no automatic candidate selection.", "Replaced real research inputs with hand-written synthetic fixtures; numerical values are invented and marked."]}
+  ],
+  "tests": "Public tests are new self-contained standard-library and optional synthetic-geometry fixtures. They neither run MD nor redistribute old trajectories.",
+  "dependencies": "Dependency code, molecular preparation parameters and model weights are not vendored; see root requirements files and THIRD_PARTY_NOTICES.md.",
+  "compatibility": "Renamed package/task manifests are a public packaging change. Copying public scripts into an existing frozen research deployment is not a supported migration; retain its original runner and environment for resume."
+}

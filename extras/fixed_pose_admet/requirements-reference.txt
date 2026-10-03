@@ -1,0 +1,9 @@
+# Historical Python 3.11 reference environment; not a cross-platform lockfile.
+# AutoDock Vina 1.2.7 is an external executable, not supplied by this file.
+admet-ai==2.0.1
+chemprop==2.2.2
+torch==2.10.0
+rdkit==2026.3.6
+numpy==2.4.6
+pandas==2.3.3
+lightning==2.6.6

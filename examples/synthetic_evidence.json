@@ -1,0 +1,37 @@
+{
+  "schema": "medchem_evidence_v1",
+  "scope": "synthetic_example",
+  "source_note": "Hand-written software fixture. All target labels and numerical evidence values are invented, not calculated or measured. Ethanol and propanol merely make the structure-file example readable.",
+  "targets": ["toy_target_A", "toy_target_B"],
+  "candidates": [
+    {
+      "id": "toy_parent", "smiles": "CCO", "source": "hand-written fixture",
+      "structure_file": "toy_parent.smi",
+      "structure_sha256": "837c7d4130671421e5c7ec5932bca4fccf9dcd97134ff91005ce7efca940099c",
+      "properties": {"MW": 46.0, "cLogP": 0.0, "TPSA_A2": 20.0, "ADMET_raw_score": 0.4, "ADMET_endpoint": "invented_demo_endpoint"}
+    },
+    {
+      "id": "toy_variant", "smiles": "CCCO", "source": "hand-written fixture",
+      "structure_file": "toy_variant.smi",
+      "structure_sha256": "71e84bc832837f13615f2c095636b6535f8b46fdb6a79e4cc62a54cec861f7a5",
+      "properties": {"MW": 60.0, "cLogP": 0.2, "TPSA_A2": 20.0, "ADMET_raw_score": 0.6, "ADMET_endpoint": "invented_demo_endpoint"}
+    }
+  ],
+  "evidence": [
+    {"candidate": "toy_parent", "target": "toy_target_A", "source": "invented software fixture", "docking_score_kcal_mol": -5.0,
+     "md": {"status": "completed_reviewed", "source": "invented software fixture, no MD occurred", "seed": 11, "sampling_ns": 1.0, "ligand_rmsd_mean_A": 1.2}},
+    {"candidate": "toy_parent", "target": "toy_target_B", "source": "invented software fixture", "docking_score_kcal_mol": -4.8,
+     "md": {"status": "incomplete_snapshot", "source": "invented software fixture, no MD occurred", "seed": 11, "sampling_ns": 0.2, "ligand_rmsd_mean_A": 1.5}},
+    {"candidate": "toy_variant", "target": "toy_target_A", "source": "invented software fixture", "docking_score_kcal_mol": -5.1,
+     "md": {"status": "not_available"}},
+    {"candidate": "toy_variant", "target": "toy_target_B", "source": "invented software fixture", "docking_score_kcal_mol": null,
+     "md": {"status": "not_available"}}
+  ],
+  "limitations": [
+    "SYNTHETIC EXAMPLE: every numerical value above is invented for software testing; neither completed_reviewed nor incomplete_snapshot records refer to a real trajectory.",
+    "No docking, property prediction, ADMET inference, MD, candidate generation or selection is executed.",
+    "An unchanged file digest does not validate chemical identity or scientific evidence.",
+    "Missing values stay null. Raw model scores and docking scores are not clinical risk or measured affinity.",
+    "No compound or drug-development recommendation may be drawn from this fixture."
+  ]
+}

@@ -1,0 +1,3 @@
+# Compatibility range, not a platform-independent lockfile.
+numpy>=1.26,<3
+openmm>=8.2,<9

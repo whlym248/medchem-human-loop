@@ -1,0 +1,4 @@
+-r requirements-md.txt
+mdtraj>=1.10,<2
+matplotlib>=3.8,<4
+rdkit>=2024.3

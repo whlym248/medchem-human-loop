@@ -1,0 +1,19 @@
+{
+  "source_basename": "repro_demo/main.py",
+  "source_sha256": "114dd7bf4957546094681bd56e13d6bb5750448c68fcd47bcdce14c935353f97",
+  "public_basename": "run_reference.py",
+  "public_sha256": "d44670aebf735dbf12868d52d2dbf7cd8dc560ec603d50539ecd4837c7a21ef8",
+  "changes": [
+    "Require explicit external input root",
+    "Use generic record_group instead of competition track",
+    "Replace assertions with explicit checks",
+    "Validate input-manifest coverage, candidate IDs, score modes and model paths"
+  ],
+  "validation": "Public adaptation: syntax and help checked only; no prediction or scoring executed during publication.",
+  "excluded": [
+    "research inputs",
+    "prediction outputs",
+    "model weights",
+    "local configuration"
+  ]
+}

@@ -1,0 +1,2 @@
+# The evidence assembler and core tests use only Python 3.10+ standard library.
+# Optional MD/analysis dependencies are listed separately.
