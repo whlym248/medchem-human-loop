@@ -2,7 +2,9 @@
 
 These are research scripts, not an installed end-to-end agent. No prepared
 molecular systems, trajectories, proprietary data or model weights are bundled.
-The only self-contained execution example is **synthetic evidence assembly**.
+Self-contained standard-library examples cover **synthetic evidence assembly,
+case retrieval, route suggestions and human review rounds**. Graph enumeration
+additionally requires RDKit; these examples do not run predictions or MD.
 
 ## Evidence demo (Python 3.10+, standard library)
 
@@ -19,11 +21,46 @@ Every numerical value in the example is invented. It runs no docking, inference,
 simulation, generation or ranking. It preserves missing values and provisional
 MD labels and checks file bytes, schema references and finite numbers. It does
 not verify that supplied scientific claims are true or that a SMILES matches a
-structure file. All decisions remain unrecorded until a person reviews evidence.
+structure file. Use the review-round tool below to record explicit decisions.
+
+## Local workflow modules
+
+| Script | Behavior | Details |
+| --- | --- | --- |
+| `case_library.py` | Validate a local JSONL case library; retrieve reviewed records by literal tokens, tags and target | [Case library](../docs/case-library.md); no bundled real corpus |
+| `enumerate_local_edits.py` | Enumerate four restricted single-site aromatic edits with RDKit | [Local edits](../docs/local-edits.md); no conformers, synthesis or scoring |
+| `proposals_to_evidence.py` | Convert supplied proposals into structure files and evidence JSON with every metric missing | [Local edits](../docs/local-edits.md); hashes are not chemical authentication |
+| `route_proposal.py` | Explain a rule-based suggestion or why evidence/backend is missing | [Route rules](../docs/route-selection.md); no learned policy |
+| `workflow_round.py` | Freeze evidence, display source/uncertainty, record human decisions and link a next round | [Review rounds](../docs/review-rounds.md); no job scheduling |
+| `hpc_probe.py` | Read explicit disk, GPU and optional state information; optionally create a new receipt | [HPC agent entry](../docs/hpc/agent-start-here.md); does not certify a running task |
+
+Standard-library round example:
+
+```console
+python scripts/workflow_round.py prepare --input examples/synthetic_evidence.json --parent toy_parent --out outputs/round1
+python scripts/workflow_round.py status --round outputs/round1
+```
+
+With the optional graph environment, a complete **software demonstration** is:
+
+```console
+python scripts/enumerate_local_edits.py --input examples/local_edit_request.json --out outputs/local_edits
+python scripts/proposals_to_evidence.py --proposals outputs/local_edits/local_edits.json --target toy_target_A --target toy_target_B --scope synthetic_example --out outputs/proposals
+python scripts/workflow_round.py prepare --input outputs/proposals/input.json --parent parent --cases examples/cases/synthetic_cases.jsonl --query aromatic --route-request examples/route_request.json --out outputs/proposal_round
+```
+
+Open `outputs/proposal_round/report.html`. The four proposals and their parent
+have **no docking, ADMET or MD measurements**. The report preserves missing
+values; producing valid graphs and a review packet does not establish useful
+chemistry. Choose fresh directories when repeating the demo. Real decisions
+require an actual reviewer; a demonstration must remain labeled synthetic.
 
 ## Optional dependencies
 
 ```console
+# Only for optional local graph editing, without MD:
+python -m pip install -r requirements-chem.txt
+# Only on a compute host authorized for MD:
 python -m pip install -r requirements-md.txt
 # For read-only pilot/trajectory analysis and optional geometry tests:
 python -m pip install -r requirements-analysis.txt

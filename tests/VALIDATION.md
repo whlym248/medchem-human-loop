@@ -1,4 +1,64 @@
-# Public-release validation — 2026-10-03
+# Public-release validation — v0.2.0, 2026-10-04
+
+Executed locally using synthetic files, small chemical graphs and synthetic
+geometry only:
+
+- Standard-library environment: **65 passed; 20 explicitly skipped** (15 RDKit
+  graph tests and 5 optional analysis tests). The missing-RDKit error test passed;
+  skips are not chemistry or geometry validation.
+- Existing scientific environment: **85 passed, 0 skipped**, including all graph
+  and analysis tests. Dependencies were already installed; no MD was run.
+- Actual CLI chain: aromatic toy parent → **4 graph proposals** → parent plus
+  proposals on 2 toy targets → **10 evidence rows** → frozen review packet →
+  explicitly synthetic decision → identity-checked second round.
+- Every docking, ADMET/property and MD measurement in that generated-proposal
+  chain remained **missing**. Synthetic case matches did not enable real case
+  support. Decisions were demonstrations, not real candidate approval.
+- Original evidence assembly remains covered with its four-row fixture, whose
+  numerical values are manually invented and explicitly synthetic.
+- **No MD, OpenMM Context/Simulation, docking, ADMET inference, model training,
+  remote school access or paid compute was executed for these checks.**
+
+Scientific dependency versions are unchanged from the v0.1 record below. The new
+HPC probe was tested with mocked GPU responses and synthetic state files,
+**not on a real school node**.
+
+## Reproduce the lightweight checks
+
+```console
+python -m unittest discover -s tests -v
+python scripts/assemble_evidence.py --input examples/synthetic_evidence.json --out outputs/demo
+python scripts/workflow_round.py prepare --input examples/synthetic_evidence.json --parent toy_parent --out outputs/round1
+```
+
+With RDKit, follow the graph-to-evidence chain in [the script guide](../scripts/README.md).
+Use fresh output paths. Decision and next-round examples are in
+[review rounds](../docs/review-rounds.md).
+
+CI covers standard-library contracts on Python 3.11/3.12 and optional graph
+editing on Python 3.12. The graph job installs only `requirements-chem.txt`;
+analysis tests are explicitly skipped there. CI runs no simulation or prediction
+service. Local results above are distinct from a remote CI run's own result.
+
+## New coverage
+
+- Case schema, sources, duplicate/nonfinite JSON, lexical retrieval and synthetic isolation.
+- Restricted edits, atom mapping, fixed neighborhoods, deduplication, unsupported chemistry and scope propagation.
+- Proposal IDs, parent linkage, safe filenames, missing metrics and refusal to import fake scores.
+- Rule suggestions, missing support and truthful diffusion unavailability.
+- Frozen snapshots, path confinement, escaped HTML, endpoint mismatch, explicit decision acknowledgement, history and approved-parent identity/scope.
+- Probe's bounded GPU query, partial/changed-state handling, selected state fields and exclusive new receipt creation.
+
+Windows testing revealed that mocking `subprocess.run` also intercepted an
+internal `platform` query in one test. The test now stubs host/platform values;
+the full suite then passed. This was a test-isolation failure, not a GPU result.
+No dependencies were installed or modified. As before, normal Conda activation
+must supply the existing scientific environment's DLL search path.
+
+These checks validate software behavior and bookkeeping, not live HPC
+deployment, synthesis, affinity, toxicity, convergence or optimization success.
+
+## Previous release — v0.1.0, 2026-10-03
 
 Executed during release preparation, using only synthetic fixtures:
 

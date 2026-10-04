@@ -4,9 +4,9 @@ type: software
 title: "MedChem Human Loop: Traceable Evidence for Human-Guided Molecular Optimization"
 authors:
   - name: "whlym"
-abstract: "A human-in-the-loop molecular optimization workflow design, auditable OpenMM execution and trajectory analysis utilities, an optional fixed-pose scoring and pretrained ADMET-AI reference interface, and a synthetic evidence assembly example. Planned components include a medicinal-chemistry case library, local molecular edits, and constrained diffusion; the release is not a trained reinforcement-learning or autonomous drug-discovery system. Author mark: whlym. Developed with AI assistance."
-version: 0.1.0
-date-released: 2026-10-03
+abstract: "A human-in-the-loop molecular optimization toolkit with auditable OpenMM utilities, local case retrieval, constrained aromatic graph edits, rule-based route suggestions, frozen evidence review and human decision records, plus an HPC agent runbook. Real case curation, constrained diffusion and complete compute orchestration remain future work; this is not a trained reinforcement-learning or autonomous drug-discovery system. Author mark: whlym. Developed with AI assistance."
+version: 0.2.0
+date-released: 2026-10-04
 repository-code: "https://github.com/whlym248/medchem-human-loop"
 url: "https://github.com/whlym248/medchem-human-loop"
 license: MIT

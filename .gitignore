@@ -10,6 +10,9 @@
 /inputs/
 /data/
 /private/
+handoff.local.json
+agent_handoff_*.json
+hpc_probe_receipt*.json
 /artifacts/
 /dist/
 *.dcd

@@ -1,0 +1,13 @@
+{
+  "scope": "synthetic_example",
+  "smiles": "Cc1ccccc1",
+  "site_index": 3,
+  "rules": [
+    "aromatic_ch_to_n",
+    "aromatic_ch_add_cn",
+    "aromatic_ch_add_f",
+    "aromatic_ch_add_cl"
+  ],
+  "fixed_atom_indices": [0, 1],
+  "max_candidates": 4
+}

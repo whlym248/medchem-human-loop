@@ -11,7 +11,13 @@
     {"public_path": "scripts/check_pilot_quality.py", "source_label": "Research technical screening: check_pilot_quality.py", "source_sha256": "821e9d81c47054ea2ca5b848f3d3507871ed490062484cb080d16dc98d81f3b5", "changes": ["No semantic changes; text line endings may be normalized by Git."]},
     {"public_path": "scripts/assemble_evidence.py", "source_label": "New generic public assembler adapted from internal existing-evidence demo main.py", "source_sha256": "ec0d462dde227f289007fd30421e3acbdcbd46c64d1627d0fa78dc2fc0414a81", "changes": ["Replaced fixed three-molecule/two-target research schema with declared candidates and targets.", "Added explicit schema validation, duplicate/missing-pair rejection, path confinement, finite-number checks, SHA verification and output-preservation guard.", "Added explicit unavailable/provisional/completed-reviewed MD status; no automatic candidate selection.", "Replaced real research inputs with hand-written synthetic fixtures; numerical values are invented and marked."]}
   ],
-  "tests": "Public tests are new self-contained standard-library and optional synthetic-geometry fixtures. They neither run MD nor redistribute old trajectories.",
+  "new_in_v0_2": {
+    "origin": "New code authored for this project with AI assistance; no copied model implementation or private research data.",
+    "release_date": "2026-10-04",
+    "public_paths": ["scripts/case_library.py", "scripts/enumerate_local_edits.py", "scripts/route_proposal.py", "scripts/proposals_to_evidence.py", "scripts/workflow_round.py", "scripts/hpc_probe.py"],
+    "documentation_sources": "HPC documentation summarizes reviewed historical private deployment records; only operational lessons and necessary software versions are published. New probe tests are isolated and do not establish school-node integration."
+  },
+  "tests": "Public tests are new self-contained standard-library, chemical-graph and optional synthetic-geometry fixtures. They neither run MD nor redistribute old trajectories.",
   "dependencies": "Dependency code, molecular preparation parameters and model weights are not vendored; see root requirements files and THIRD_PARTY_NOTICES.md.",
   "compatibility": "Renamed package/task manifests are a public packaging change. Copying public scripts into an existing frozen research deployment is not a supported migration; retain its original runner and environment for resume."
 }

@@ -1,0 +1,83 @@
+{
+  "schema_version": 1,
+  "template_only": true,
+  "purpose": "Copy outside the public repository and fill from current authorization and real observations. Do not store passwords or tokens.",
+  "updated_utc": null,
+  "operator": "<OPERATOR>",
+  "authorization": {
+    "resource_owner": "<RESOURCE_OWNER>",
+    "portal_url": "https://hpc.hust.edu.cn/",
+    "approved_project_ref": "<PRIVATE_PROJECT_REF>",
+    "approved_instance_ref": "<PRIVATE_INSTANCE_REF>",
+    "maximum_gpu_count": 1,
+    "budget_unit": "<BILLING_UNIT>",
+    "approved_budget": null,
+    "expires_utc": null,
+    "new_paid_resources_allowed": false,
+    "local_MD_allowed": false,
+    "new_MD_tasks_allowed": false,
+    "reboot_allowed": false,
+    "SSH_key_installation_allowed": false,
+    "credentials_handled_by": "user"
+  },
+  "access": {
+    "portal_authentication": "unknown",
+    "VM_login": "unknown",
+    "browser_control": "unknown",
+    "observed_utc": null,
+    "pending_user_action": null
+  },
+  "environment": {
+    "compute_surface": "VM_or_allocated_compute_node",
+    "gpu_model": null,
+    "driver_version": null,
+    "python_version": null,
+    "openmm_version_and_build": null,
+    "cuda_runtime": null,
+    "installed_inventory_path": "<PRIVATE_ENVIRONMENT_INVENTORY>",
+    "installed_inventory_sha256": null,
+    "code_commit": null,
+    "input_bundle_sha256": null,
+    "pilot_actually_reviewed": false,
+    "pilot_review_evidence": []
+  },
+  "queue": {
+    "already_started": null,
+    "VM_local_workdir": "<VM_LOCAL_WORKDIR>",
+    "authoritative_state_path": "<VM_LOCAL_STATE_JSON>",
+    "shared_mirror_path": "<PRIVATE_SHARED_MIRROR_JSON>",
+    "queue_script_sha256": null,
+    "status_action_source_reviewed": false,
+    "status_action_has_writes": "unknown",
+    "approved_readonly_query": "python3 scripts/hpc_probe.py --workdir <VM_LOCAL_WORKDIR> --state <VM_LOCAL_STATE_JSON>",
+    "monitor_is_not_queue_launcher": true,
+    "last_actual_observation_utc": null,
+    "last_reported_state": "unknown",
+    "current_case": null,
+    "current_seed": null,
+    "last_reported_production_ns": null,
+    "process_identity_checked_utc": null,
+    "checkpoint_hashes_and_identity_checked_utc": null,
+    "reported_completed_cases": [],
+    "independently_analyzed_cases": [],
+    "scientifically_reviewed_cases": [],
+    "verified_backups": [],
+    "source_evidence_paths": []
+  },
+  "blockers": [],
+  "prepared_but_not_deployed": [],
+  "next_safe_action": "Read latest human instructions; verify existing state before any mutation.",
+  "handover": {
+    "monitoring_deadline_utc": null,
+    "monitoring_stopped": null,
+    "remote_queue_stop_confirmed": null,
+    "resource_release_confirmed": null,
+    "recipient": "<RESPONSIBLE_PERSON>",
+    "recipient_accepted": false
+  },
+  "privacy": {
+    "no_credentials": true,
+    "filled_copy_is_private": true,
+    "public_upload_allowed": false
+  }
+}

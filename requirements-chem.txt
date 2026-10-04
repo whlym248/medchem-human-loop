@@ -1,0 +1,3 @@
+# Optional graph enumeration only; no MD, model download or conformer generation.
+# Verified with RDKit 2026.03.6. Tests skip explicitly when RDKit is unavailable.
+rdkit>=2024.9,<2027.0

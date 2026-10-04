@@ -22,5 +22,26 @@ jobs:
         run: python -m unittest discover -s tests -v
       - name: Execute synthetic evidence demo
         run: python scripts/assemble_evidence.py --input examples/synthetic_evidence.json --out outputs/demo
+      - name: Exercise synthetic review and round linkage
+        run: |
+          python scripts/workflow_round.py prepare --input examples/synthetic_evidence.json --parent toy_parent --cases examples/cases/synthetic_cases.jsonl --query aromatic --route-request examples/route_request.json --out outputs/round1
+          python scripts/workflow_round.py decide --round outputs/round1 --candidate toy_variant --action approve_next_round --reviewer ci-demo --reason "Synthetic test only; no scientific approval" --acknowledge-limitations
+          python scripts/workflow_round.py prepare --input examples/synthetic_evidence.json --parent toy_variant --previous-round outputs/round1 --out outputs/round2
       - name: Check Python syntax without importing scientific runtimes
         run: python -m compileall -q scripts tests extras
+  chemistry-graphs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install optional graph dependency
+        run: python -m pip install -r requirements-chem.txt
+      - name: Check graph edits and evidence contracts without MD
+        run: python -m unittest discover -s tests -v
+      - name: Execute graph proposals to missing-evidence review
+        run: |
+          python scripts/enumerate_local_edits.py --input examples/local_edit_request.json --out outputs/edits
+          python scripts/proposals_to_evidence.py --proposals outputs/edits/local_edits.json --target toy_target_A --target toy_target_B --scope synthetic_example --out outputs/proposals
+          python scripts/workflow_round.py prepare --input outputs/proposals/input.json --parent parent --out outputs/proposal_round
